@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/WEB-INF/tags/layout.xhtml">
+	<ui:define name="content">
+
+		<h1>Edition de client</h1>
+		<h:form>
+
+			<p:panelGrid columns="3">
+				<p:outputLabel for="nom" value="Nom" />
+				<p:inputText id="nom" value="#{clientController.nom}"
+					required="true" requiredMessage="Saisie obligatoire"
+					validatorMessage="Uniquement des lettres, minumum 2"
+					placeholder="#{clientController.nom}">
+					<f:validateRegex pattern="^([a-zA-Z]){2,}" />
+				</p:inputText>
+				<p:message for="nom" />
+
+
+				<p:outputLabel for="prenom" value="Prenom" />
+				<p:inputText id="prenom" value="#{clientController.prenom}"
+					required="true" requiredMessage="Saisie obligatoire"
+					validatorMessage="Uniquement des lettres, minumum 2"
+					placeholder="#{clientController.prenom}">
+					<f:validateRegex pattern="^([a-zA-Z]){2,}" />
+				</p:inputText>
+				<p:message for="prenom" />
+
+
+				<p:outputLabel for="email" value="Email" />
+				<p:inputText id="email" value="#{clientController.email}"
+					required="true" requiredMessage="Saisie obligatoire"
+					validatorMessage="Sous la forme xx@xx.xx"
+					placeholder="#{clientController.email}">
+					<f:validateRegex
+						pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+				</p:inputText>
+				<p:message for="email" />
+
+
+				<p:outputLabel for="numero" value="Numero" />
+				<p:inputText id="numero" value="#{clientController.numero}"
+					required="true" requiredMessage="Saisie obligatoire"
+					validatorMessage="Uniquement des chiffres"
+					placeholder="#{clientController.numero}">
+					<f:validateRegex pattern="^([0-9]{1,})" />
+				</p:inputText>
+				<p:message for="numero" />
+
+
+				<p:outputLabel for="rue" value="Rue" />
+				<p:inputText id="rue" value="#{clientController.rue}"
+					required="true" requiredMessage="Saisie obligatoire"
+					validatorMessage="Uniquement des lettres"
+					placeholder="#{clientController.rue}">
+					<f:validateRegex pattern="^([a-zA-Z]{1,})" />
+				</p:inputText>
+				<p:message for="rue" />
+
+
+				<p:outputLabel for="codepostal" value="Code postal" />
+				<p:inputText id="codepostal" value="#{clientController.codePostal}"
+					required="true" requiredMessage="Saisie obligatoire"
+					validatorMessage="Uniquement en chiffre, miniumum 5"
+					placeholder="#{clientController.codePostal}">
+					<f:validateRegex pattern="^([0-9]{5})" />
+				</p:inputText>
+				<p:message for="codepostal" />
+
+
+				<p:outputLabel for="ville" value="Ville" />
+				<p:inputText id="ville" value="#{clientController.ville}"
+					required="true" requiredMessage="Saisie obligatoire"
+					validatorMessage="Uniquement des lettres, miniumum 1"
+					placeholder="#{clientController.ville}">
+					<f:validateRegex pattern="^([a-zA-Z]{1,})" />
+				</p:inputText>
+				<p:message for=" ville" />
+			</p:panelGrid>
+
+			<p>
+				<h:commandButton action="#{clientController.modifierClient()}"
+					value="Editer le client" validateClient="true"/>
+			</p>
+		</h:form>
+
+
+	</ui:define>
+</ui:composition>
+
+</html>

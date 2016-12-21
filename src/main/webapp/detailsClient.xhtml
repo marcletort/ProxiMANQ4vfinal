@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/WEB-INF/tags/layout.xhtml">
+	<ui:define name="content">
+
+		<!-- 		<h1>Client ${client.nom} ${client.prenom}</h1> -->
+
+		<h1>Détail du client</h1>
+		<h:form>
+			<p:panelGrid columns="2">
+				<p:outputLabel value="Nom" />
+				<p:outputLabel value="#{clientController.nom}" />
+				<p:outputLabel value="Prenom" />
+				<p:outputLabel value="#{clientController.prenom}" />
+				<p:outputLabel value="Email" />
+				<p:outputLabel value="#{clientController.email}" />
+				<p:outputLabel value="Numero" />
+				<p:outputLabel value="#{clientController.numero}" />
+				<p:outputLabel value="Rue" />
+				<p:outputLabel value="#{clientController.rue}" />
+				<p:outputLabel value="Code Postal" />
+				<p:outputLabel value="#{clientController.codePostal}" />
+				<p:outputLabel value="Ville" />
+				<p:outputLabel value="#{clientController.ville}" />
+				
+<!-- 							<h1>Compte Courant</h1> -->
+<!-- 						<p:panelGrid columns="2"> -->
+<!-- 							<p:outputLabel value="Numéro de compte" /> -->
+<!-- 							<p:outputLabel value="#{compteController.compteCourant.id}" /> -->
+<!-- 							<p:outputLabel value="Date d'ouverture" /> -->
+<!-- 							<p:outputLabel -->
+<!-- 								value="#{compteController.compteCourant.dateOuverture}" /> -->
+<!-- 							<p:outputLabel value="Montant" /> -->
+<!-- 							<p:outputLabel value="#{compteController.compteCourant.montant}" /> -->
+<!-- 						</p:panelGrid> -->
+<!-- 						<h1>Compte Epargne</h1> -->
+<!-- 						<p:panelGrid columns="2"> -->
+<!-- 							<p:outputLabel value="Numéro de compte" /> -->
+<!-- 							<p:outputLabel value="#{compteController.compteEpargne.id}" /> -->
+<!-- 							<p:outputLabel value="Date d'ouverture" /> -->
+<!-- 							<p:outputLabel -->
+<!-- 								value="#{compteController.compteEpargne.dateOuverture}" /> -->
+<!-- 							<p:outputLabel value="Montant" /> -->
+<!-- 							<p:outputLabel value="#{compteController.compteEpargne.montant}" /> -->
+<!-- 						</p:panelGrid> -->
+
+			</p:panelGrid>
+			<p>
+				<p:commandButton action="ouvrirUnCompte.xhtml"
+					value="Ouvrir un compte" />
+					
+				<p:commandButton action="editerClient.xhtml"
+					value="Editer un client" />
+			</p>
+
+		</h:form>
+
+	</ui:define>
+</ui:composition>
+
+</html>

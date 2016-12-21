@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd"
+	version="1.0">
+
+	<persistence-unit name="persistenceUnit"
+		transaction-type="RESOURCE_LOCAL">
+		<class>org.formation.model.Client</class>
+
+		<class>org.formation.model.Conseiller</class>
+		<class>org.formation.model.Adresse</class>
+		<class>org.formation.model.Gerant</class>
+		<class>org.formation.model.Compte</class>
+		<class>org.formation.model.CompteEpargne</class>
+		<class>org.formation.model.CompteCourant</class>
+		<class>org.formation.model.Banquier</class>
+		<class>org.formation.model.Virement</class>
+
+
+		<exclude-unlisted-classes>true</exclude-unlisted-classes>
+		<properties>
+			<property name="hibernate.hbm2ddl.auto" value="update" />
+		</properties>
+	</persistence-unit>
+
+</persistence>

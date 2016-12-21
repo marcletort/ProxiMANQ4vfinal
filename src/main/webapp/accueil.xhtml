@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:body>
+
+	<ui:composition template="/WEB-INF/tags/layout.xhtml">
+		<ui:define name="content">
+
+Vous avez en gestion :
+			<ul>
+				<li>#{bankController.obtenirListeClients().size()} clients</li>
+<!-- 				<li>#{bankController.obtenirNombreCompte()} comptes</li> -->
+				<!-- 				<li>#{bankController.obtenirSommeTotaleConseiller()} euros</li> -->
+			</ul>
+
+			<div class="well well-lg">
+				<p:dataTable value="#{bankController.obtenirListeClients()}" var="c">
+
+					<p:column headerText="Nom">
+						<h:form>
+
+							<h:commandLink value="#{c.nom}"
+								action="#{clientController.detailsClient(c)}">
+							</h:commandLink>
+						</h:form>
+					</p:column>
+
+					<p:column headerText="Prénom">
+						<h:form>
+							<h:commandLink value="#{c.prenom}"
+								action="#{clientController.detailsClient(c)}">
+							</h:commandLink>
+						</h:form>
+					</p:column>
+					<p:column headerText="Numéro">
+						<h:form>
+							<h:outputText value="#{c.adresse.numero}" />
+
+						</h:form>
+					</p:column>
+
+					<p:column headerText="Rue">
+						<h:form>
+							<h:outputText value="#{c.adresse.rue}" />
+						</h:form>
+					</p:column>
+
+					<p:column headerText="Code Postal">
+						<h:form>
+
+							<h:outputText value="#{c.adresse.codePostal}" />
+
+						</h:form>
+					</p:column>
+					<p:column headerText="Ville">
+						<h:form>
+							<h:outputText value="#{c.adresse.ville}" />
+
+
+						</h:form>
+					</p:column>
+
+					<p:column headerText="Email">
+						<h:form>
+							<h:commandLink value="#{c.email}"
+								action="#{clientController.detailsClient(c)}">
+							</h:commandLink>
+						</h:form>
+					</p:column>
+
+
+
+					<p:column headerText="Solde Compte Courant">
+					<h:outputText value="#{c.compteCourant.montant}" />
+					</p:column>
+
+					<p:column headerText="Supprimer le client">
+						<h:form>
+							<h:commandLink value="Supprimer"
+								action="#{clientController.supprimerClient(c)}">
+							</h:commandLink>
+						</h:form>
+					</p:column>
+
+
+				</p:dataTable>
+			</div>
+
+		</ui:define>
+	</ui:composition>
+
+
+
+</h:body>
+</html>

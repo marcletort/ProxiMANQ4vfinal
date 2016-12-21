@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:body>
+
+	<ui:composition template="/WEB-INF/tags/layout.xhtml">
+		<ui:define name="content">
+			<div class="well well-lg">
+
+				<h:form>
+					<p:commandButton action="#{bankController.creerCons()}"
+						value="Creer le conseiller Dieu"/>
+
+				</h:form>
+				<h:form>
+					<p:commandButton action="#{bankController.chargerCons()}"
+						value="Se connecter avec Jesus"/>
+
+				</h:form>
+
+				<p:fieldset legend="Home Page" toggleable="false" toggleSpeed="500">
+					<center>
+						<img
+							src="https://img1.lght.pics/0b46f8bc4911659145cbd0a504fc14dc.jpg" />
+					</center>
+				</p:fieldset>
+			</div>
+
+		</ui:define>
+	</ui:composition>
+
+
+
+</h:body>
+</html>

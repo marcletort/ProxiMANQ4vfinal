@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/WEB-INF/tags/layout.xhtml">
+	<ui:define name="content">
+
+
+		<h1>Virements</h1>
+
+		<div class="well well-lg">
+			<p:dataTable value="#{bankController.obtenirListeClients()}" var="c">
+
+				<p:column headerText="Nom">
+					<h:form>
+
+						<h:commandLink value="#{c.nom}"
+							action="#{clientController.detailsClient(c.id)}">
+						</h:commandLink>
+					</h:form>
+				</p:column>
+
+				<p:column headerText="Prénom">
+					<h:form>
+						<h:commandLink value="#{c.prenom}"
+							action="#{clientController.detailsClient(c.id)}">
+						</h:commandLink>
+					</h:form>
+				</p:column>
+				<p:column headerText="Id compte courant">
+					<h:form>
+						<h:commandLink value="#{c.compteCourant.id}"
+							action="#{clientService.detailsClient(c.id)}">
+						</h:commandLink>
+					</h:form>
+				</p:column>
+
+				<p:column headerText="Solde compte courant">
+					<h:form>
+						<h:commandLink value="#{c.compteCourant.montant}"
+							action="#{clientService.detailsClient(c.id)}">
+						</h:commandLink>
+					</h:form>
+				</p:column>
+
+				<p:column headerText="Id compte epargne">
+					<h:form>
+
+						<h:commandLink value="#{c.compteEpargne.id}"
+							action="#{clientService.detailsClient(c.id)}">
+						</h:commandLink>
+					</h:form>
+				</p:column>
+				<p:column headerText="solde compte epargne">
+					<h:form>
+						<h:commandLink value="#{c.compteEpargne.montant}"
+							action="#{clientService.detailsClient(c.id)}">
+
+						</h:commandLink>
+					</h:form>
+				</p:column>
+
+				
+
+			</p:dataTable>
+		</div>
+<h:form>
+<div class="well well-lg">
+<h:outputLabel value="Choisir le compte expediteur: *" for="compteEx" />
+<h:selectOneMenu id="compteEx" value="${virementController.compteExId}">
+<f:selectItems value="${compteController.getAllComptes()}" var="compte" itemValue="#{compte.id}"/>
+</h:selectOneMenu>
+</div>
+<div class="well well-lg">
+<h:outputLabel value="Choisir le compte beneficiaire: *" for="compteBe" />
+<h:selectOneMenu id="compteBe" value="${virementController.compteBeId}">
+<f:selectItems value="${compteController.getAllComptes()}" var="compte" itemValue="#{compte.id}"/>
+</h:selectOneMenu>
+</div>
+
+<div class="well well-lg">
+
+<p:outputLabel for="montant" value="Montant" />
+				<p:inputText id="montant" value="#{virementController.montant}">
+			
+				</p:inputText>
+			
+				
+<p class="virement">
+				<p:commandButton action="#{virementController.virement()}"
+					value="Effectuer le virement" validateClient="true" />
+			</p>
+				
+
+			
+</div>
+</h:form>
+    
+	
+
+	</ui:define>
+</ui:composition>
+
+</html>
